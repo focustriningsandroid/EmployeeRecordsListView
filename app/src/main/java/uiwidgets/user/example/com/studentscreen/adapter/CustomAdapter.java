@@ -20,10 +20,10 @@ public class CustomAdapter extends BaseAdapter {
     Records records[];
     LayoutInflater inflter;
 
-    public CustomAdapter(Context applicationContext, Records[] records) {
+    public CustomAdapter(Context context, Records[] records) {
         this.context = context;
         this.records = records;
-        inflter = (LayoutInflater.from(applicationContext));
+        inflter = (LayoutInflater.from(context));
     }
     @Override
     public int getCount() {
@@ -47,16 +47,17 @@ public class CustomAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.row, null);
         TextView empname = (TextView) view.findViewById(R.id.tvemname);
         ImageView empIcon = (ImageView) view.findViewById(R.id.empicon);
-        TextView tvempidvalue = (TextView) view.findViewById(R.id.tvempidvalue);
+        TextView tvempidvalue = (TextView) view.findViewById(R.id.tvempidtitle);
         TextView tvempaddressvalue = (TextView) view.findViewById(R.id.tvempaddressvalue);
         ImageView companylogo = (ImageView) view.findViewById(R.id.companylogo);
         Button category = (Button) view.findViewById(R.id.category);
+
         empname.setText(records[i].getEmployee().getName());
-        empIcon.setBackground(context.getResources().getDrawable(records[i].getEmployee().getFlag(), null));
-        tvempidvalue.setText(records[i].getEmployee().getId());
+        empIcon.setBackground(records[i].getEmployee().getFlag());
+        tvempidvalue.setText("Emloyee ID: "+records[i].getEmployee().getId());
         tvempaddressvalue.setText(records[i].getComany().getAddress());
-        companylogo.setBackground(context.getResources().getDrawable(records[i].getComany().getLogo(), null));
-        category.setText("Category of "+ records[i].getComany().getName()+" is: "+records[i].getCategory().getCategoryName());
-        return null;
+        companylogo.setBackground(records[i].getComany().getLogo());
+        category.setText(records[i].getCategory().getCategoryName());
+        return view;
     }
 }

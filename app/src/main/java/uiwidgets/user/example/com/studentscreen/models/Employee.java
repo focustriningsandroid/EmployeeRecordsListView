@@ -1,25 +1,28 @@
 package uiwidgets.user.example.com.studentscreen.models;
 
+import android.graphics.drawable.Drawable;
+
 public class Employee {
 
 
-    private int flag;
+    private Drawable flag;
     private String name;
 
 
 
     private int id;
 
-    public Employee(int flag, String name) {
+    public Employee(Drawable flag, String name, int id) {
+        this.id = id;
         this.flag = flag;
         this.name = name;
     }
 
-    public int getFlag() {
+    public Drawable getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag) {
+    public void setFlag(Drawable flag) {
         this.flag = flag;
     }
 

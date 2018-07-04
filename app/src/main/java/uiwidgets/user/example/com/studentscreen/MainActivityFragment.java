@@ -1,5 +1,7 @@
 package uiwidgets.user.example.com.studentscreen;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,7 @@ public class MainActivityFragment extends Fragment {
         return v;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onResume() {
         super.onResume();
@@ -46,12 +49,14 @@ public class MainActivityFragment extends Fragment {
         simpleList.setAdapter(customAdapter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Records[] getRecords() {
-        Records[] records = new Records[]{};
+        Records[] records = new Records[1000];
+
         for(int i = 0; i < 1000; i++){
-            Employee emp = new Employee(R.drawable.ic_launcher_foreground, String.valueOf(i).toUpperCase());
-            Company company = new Company(R.drawable.ic_launcher_background, "Com:"+String.valueOf(i));
-            Category category = new Category("category is: "+String.valueOf(i));
+            Employee emp = new Employee(getActivity().getDrawable(R.drawable.br), String.valueOf(i).toUpperCase(), i);
+            Company company = new Company(getActivity().getDrawable(R.drawable.br), "Com:"+String.valueOf(i), "Hyderabad");
+            Category category = new Category(String.valueOf(i));
             Records record = new Records(emp, category, company, i);
             records[i] = record;
         }

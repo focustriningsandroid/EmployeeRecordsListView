@@ -1,23 +1,26 @@
 package uiwidgets.user.example.com.studentscreen.models;
 
+import android.graphics.drawable.Drawable;
+
 public class Company {
 
-    private int logo;
+    private Drawable logo;
     private String name;
 
 
     private String address;
 
-    public Company(int logo, String name) {
+    public Company(Drawable logo, String name, String address) {
         this.logo = logo;
         this.name = name;
+        this.address = address;
     }
 
-    public int getLogo() {
+    public Drawable getLogo() {
         return logo;
     }
 
-    public void setLogo(int logo) {
+    public void setLogo(Drawable logo) {
         this.logo = logo;
     }
 
